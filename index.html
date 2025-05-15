@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aeterna Milano Voyages</title>
+
+  <style>
+    @font-face {
+      font-family: 'Cooper BT';
+      src: url('CooperBT.ttf');
+    }
+
+    body {
+      font-family: 'Cooper BT', 'Georgia', serif;
+      margin: 0;
+      background-color: #f5f5dc;
+      color: #000;
+    }
+
+    header {
+      background-image: url('interno.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    /* Aggiunta per rendere l'immagine della galleria responsiva */
+    header img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .hamburger-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .hamburger-menu div {
+      width: 100%;
+      height: 4px;
+      background-color: white;
+    }
+
+    .menu-container {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      background-image: url('tendina.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+      z-index: 999;
+      max-height: 300px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease;
+    }
+
+    .menu-container a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.2rem;
+      margin: 15px 0;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 15px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: block;
+    }
+
+    .menu-container a:hover {
+      background-color: #d4af37;
+      color: black;
+    }
+
+    section {
+      display: none;
+      padding: 30px;
+      text-align: center;
+    }
+
+    #home {
+      display: block;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      color: #d4af37;
+      margin-bottom: 20px;
+    }
+
+    .destinazione img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    #contatti {
+      background-color: #f5f5dc;
+      padding: 60px 20px;
+      text-align: center;
+      color: #000;
+    }
+
+    #contatti p, #contatti a {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e0e0b7;
+      color: #333;
+    }
+
+    .recensione {
+      background-color: #fff;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #d4af37;
+    }
+
+    .recensione p {
+      margin: 10px 0;
+    }
+
+    .recensione p:first-child {
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    .recensione p:nth-child(2) {
+      font-size: 1.4rem;
+      color: #d4af37;
+    }
+
+    .recensione p:nth-child(3) {
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* Aggiunta per migliorare la responsività delle immagini */
+    #home img, header img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      section h2 {
+        font-size: 1.4rem;
+      }
+
+      .menu-container {
+        width: 80%;
+      }
+
+      header {
+        background-size: contain;
+        height: 200px;
+      }
+
+      header img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h1>Aeterna Milano Voyages</h1>
+    <div class="menu-container" id="menu">
+      <a href="javascript:void(0);" onclick="showSection('home')">Home</a>
+      <a href="javascript:void(0);" onclick="showSection('destinazioni')">Destinazioni</a>
+      <a href="javascript:void(0);" onclick="showSection('recensioni')">Recensioni</a>
+      <a href="javascript:void(0);" onclick="showSection('contatti')">Contatti</a>
+    </div>
+  </header>
+
+  <section id="home">
+    <h2>Viaggi di Lusso dal Cuore di Milano</h2>
+    <p>Parti dalla Galleria Vittorio Emanuele II verso il mondo intero con stile eterno.</p>
+    <img src="galleria.jpg" alt="Galleria Vittorio Emanuele II" class="hero-img" />
+  </section>
+
+  <section id="destinazioni">
+    <h2>Destinazioni Esclusive</h2>
+    <div class="destinazione">
+      <h3>Pechino</h3>
+      <img src="pechino.jpg" alt="Pechino" />
+      <p>Vivi la storia imperiale della Cina con un tour curato nei minimi dettagli.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Tokyo</h3>
+      <img src="tokyo.jpg" alt="Tokyo" />
+      <p>Scopri il Giappone tra modernità e tradizione con un viaggio esclusivo.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Parigi</h3>
+      <img src="parigi.jpg" alt="Parigi" />
+      <p>Eleganza senza tempo nella città dell’amore e dell’alta moda.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Monaco</h3>
+      <img src="monaco.jpg" alt="Monaco" />
+      <p>Lusso, casinò e vista sul mare in una delle mete più raffinate d’Europa.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Firenze</h3>
+      <img src="firenze.jpg" alt="Firenze" />
+      <p>La culla del Rinascimento, dove arte e cultura si incontrano in ogni angolo.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Roma</h3>
+      <img src="roma.jpg" alt="Roma" />
+      <p>Un viaggio tra storia millenaria e modernità, un'esperienza senza eguali.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Palermo</h3>
+      <img src="palermo.jpg" alt="Palermo" />
+      <p>La Sicilia ti aspetta con la sua gastronomia, arte e storia senza tempo.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Venezia</h3>
+      <img src="venezia.jpg" alt="Venezia" />
+      <p>Un'esperienza unica tra canali e piazze, una città che sa incantare.</p>
+    </div>
+    <div class="destinazione">
+      <h3>Dubai</h3>
+      <img src="dubai.jpg" alt="Dubai" />
+      <p>Lusso estremo e modernità assoluta in una delle città più affascinanti del mondo.</p>
+    </div>
+  </section>
+
+  <section id="recensioni">
+    <h2>Recensioni dei Clienti</h2>
+    <div class="recensione">
+      <p>"Un'esperienza indimenticabile. Ogni dettaglio curato alla perfezione!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Federico S.</p>
+    </div>
+    <div class="recensione">
+      <p>"Viaggiare con Aeterna è stato un sogno che si è avverato. Consigliatissimi!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Marina P.</p>
+    </div>
+    <div class="recensione">
+      <p>"Un servizio impeccabile e una professionalità rara. Siamo tornati entusiasti!"</p>
+      <p>⭐⭐⭐⭐</p>
+      <p>Giovanni D.</p>
+    </div>
+    <div class="recensione">
+      <p>"Tutto perfetto! Viaggi esclusivi che ti fanno sentire unico!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Alessandra M.</p>
+    </div>
+    <div class="recensione">
+      <p>"Un viaggio che rimarrà nel cuore. Organizzazione eccellente!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Marco L.</p>
+    </div>
+    <div class="recensione">
+      <p>"Servizio senza pari. Grazie Aeterna per aver reso il nostro viaggio speciale!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Francesca V.</p>
+    </div>
+    <div class="recensione">
+      <p>"Un viaggio fantastico! La qualità dei servizi è al top!"</p>
+      <p>⭐⭐⭐⭐</p>
+      <p>Stefano F.</p>
+    </div>
+    <div class="recensione">
+      <p>"Ottima esperienza, organizzazione senza eguali!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Laura G.</p>
+    </div>
+    <div class="recensione">
+      <p>"Indimenticabile! Un’esperienza che non vediamo l'ora di ripetere!"</p>
+      <p>⭐⭐⭐⭐⭐</p>
+      <p>Carla D.</p>
+    </div>
+    <div class="recensione">
+      <p>"Un viaggio da sogno, con una guida esperta e una cura incredibile nei dettagli."</p>
+      <p>⭐⭐⭐⭐</p>
+      <p>Luigi B.</p>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <p>📍 Indirizzo: Piazza del Duomo, 19, Milano</p>
+    <p>📧 Email: <a href="mailto:info@aeternamilano.com">info@aeternamilano.com</a></p>
+    <p>📞 Telefono: +39 02 123456</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Aeterna Milano Voyages. Tutti i diritti riservati.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+
+    function showSection(id) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.style.display = 'none'; 
+      });
+
+      const selectedSection = document.getElementById(id);
+      selectedSection.style.display = 'block';
+
+      document.getElementById('menu').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
